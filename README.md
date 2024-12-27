@@ -1,6 +1,10 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## PreRequisites
+
+Install npm, and Docker Desktop. You will need to be local admin on your development machine to run Docker Desktop. 
+
+## Getting Started - Running the Development Server
 
 First, run the development server:
 
@@ -13,6 +17,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Running the app with Docker
+
+To test builds using Docker containers run: 
+```
+docker compose up --build -d
+```
+
 
 ## Learn More
 
