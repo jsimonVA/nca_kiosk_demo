@@ -1,10 +1,11 @@
 'use client';
 
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { QRCodeCanvas } from 'qrcode.react';
 import Image from 'next/image';
 
-export default function Details() {
+const Page = () => {
   const searchParams = useSearchParams();
   const name = searchParams.get('name') || 'Unknown Veteran';
   const branch = searchParams.get('branch') || 'Unknown Branch';
@@ -12,6 +13,7 @@ export default function Details() {
   const lat = searchParams.get('lat') || '0';
   const long = searchParams.get('long') || '0';
   const cemeteryCode = searchParams.get('cemeteryCode') || '000';
+
 
   const mapPath = `/maps/${cemeteryCode}.jpg`;
   const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${long}&travelmode=walking`;
@@ -54,7 +56,6 @@ export default function Details() {
           </div>
         </div>
       </div>
-
       {/* QR Code Section */}
       <div className="mt-6 flex flex-col items-center">
         <h2 className="text-lg font-bold text-black mb-2">Scan QR Code for Directions</h2>
@@ -118,4 +119,12 @@ export default function Details() {
       </div>
     </div>
   );
-}
+};
+
+const PageWrapper = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Page />
+  </Suspense>
+);
+
+export default PageWrapper;
